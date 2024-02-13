@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='fastapi_range_response',
-    version='0.1',
+    version='0.1.1',
     description='HTTP range implementation based on Fastapi',
     author='wyh',
     author_email='2448979539@qq.com',

@@ -2,7 +2,8 @@ import os
 import random
 import re
 import hashlib
-from email.utils import formatdate, quote
+from urllib.parse import quote
+from email.utils import formatdate
 from abc import ABC, abstractmethod
 from mimetypes import guess_type
 from typing import Sequence, Tuple, Optional, Mapping, Union, AnyStr, Dict, Callable
@@ -13,6 +14,7 @@ from starlette.responses import Response
 from starlette.types import Scope, Receive, Send
 
 from fastapi_range_response.exceptions import *
+
 
 class BaseRangeResponse(ABC, Response):
     """
@@ -49,7 +51,6 @@ class BaseRangeResponse(ABC, Response):
             download_name = self.download_name or self.file_name
             content_disposition = (
                 "attachment; "
-                f'filename="{download_name}"; '
                 f"filename*=utf-8''{quote(download_name)}"
             )
             headers["content-disposition"] = content_disposition
